@@ -1,0 +1,61 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+int main()
+{
+    char playAgain;
+
+    srand(time(0));
+
+    do
+    {
+        int targetNumber = rand() % 100 + 1;
+        int guess;
+        int attempts = 0;
+
+        cout << "\n===== NUMBER GUESSING GAME =====\n";
+        cout << "I have selected a number between 1 and 100.\n";
+        cout << "Try to guess it!\n\n";
+
+        do
+        {
+            cout << "Enter your guess: ";
+            cin >> guess;
+
+            attempts++;`
+
+            if (guess > targetNumber)
+            {
+                cout << "Too High! Try again.\n";
+            }
+            else if (guess < targetNumber)
+            {
+                cout << "Too Low! Try again.\n";
+            }
+            else
+            {
+                cout << "\nCorrect! You guessed the number.\n";
+                cout << "Target Number: " << targetNumber << endl;
+                cout << "Total Attempts: " << attempts << endl;
+
+                if (attempts <= 5)
+                    cout << "Excellent Score!\n";
+                else if (attempts <= 10)
+                    cout << "Good Score!\n";
+                else
+                    cout << "Keep Practicing!\n";
+            }
+
+        } while (guess != targetNumber);
+
+        cout << "\nDo you want to play again? (y/n): ";
+        cin >> playAgain;
+
+    } while (playAgain == 'y' || playAgain == 'Y');
+
+    cout << "\nThanks for playing!\n";
+
+    return 0;
+}
